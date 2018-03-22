@@ -7,6 +7,13 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var signUp = require('./routes/sign-up')
+var login = require('./routes/login')
+var userHome = require('./routes/user-home')
+var newPoll = require('./routes/new-poll')
+var congrats = require('./routes/congrats')
+var myPolls = require('./routes/my-polls')
+var poll = require('./routes/poll')
 
 var app = express();
 
@@ -14,8 +21,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,6 +30,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/sign-up', signUp)
+app.use('/login', login)
+app.use('/user-home', userHome)
+app.use('/new-poll', newPoll)
+app.use('/congrats', congrats)
+app.use('/my-polls', myPolls)
+app.use('/:poll', poll)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
