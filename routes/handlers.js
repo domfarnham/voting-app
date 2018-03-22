@@ -29,7 +29,8 @@ exports.congratsPage = (req, res, next) => {
   res.render('congrats', {
     user: {
       firstName: 'Dom'
-    }
+    },
+    pollURL: "http://localhost:3000/poll"
   })
 }
 

@@ -16,4 +16,6 @@ block content
             a(class="nav-link" href="/logout") Logout
       a(class="nav-link" href="/user-home") #{user.firstName}
     main(class="center-div")
-      h1 Congratulations
+      h1(class="display-4") Congratulations!
+      p(class="lead") Your poll has been posted to 
+        a(href=pollURL) #{pollURL}
