@@ -14,6 +14,7 @@ var newPoll = require('./routes/new-poll')
 var congrats = require('./routes/congrats')
 var myPolls = require('./routes/my-polls')
 var poll = require('./routes/poll')
+var register = require('./routes/register')
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/new-poll', newPoll)
 app.use('/congrats', congrats)
 app.use('/my-polls', myPolls)
 app.use('/:poll', poll)
+app.use('/register', register)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

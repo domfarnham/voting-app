@@ -49,6 +49,18 @@ describe('routes', function () {
       .get('/example-poll')
       .expect(200, done)
   })
+  it('should respond to /register', function testRegister (done) {
+    const testUser = {
+      firstName: 'Bob',
+      surname: 'Smith',
+      email: 'bobs@test.com',
+      password: 'testing123',
+      passwordConf: 'testing123'
+    }
+    request(server)
+      .post({url: '/register', formData: testUser})
+      .expect(200, done)
+  })
   it('should respond with 404 for everything else', function testPath (done) {
     request(server)
       .get('/foo/bar')
