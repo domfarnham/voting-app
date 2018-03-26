@@ -31,7 +31,7 @@ exports.congratsPage = (req, res, next) => {
     user: {
       firstName: 'Dom'
     },
-    pollURL: "http://localhost:3000/poll"
+    pollURL: 'http://localhost:3000/poll'
   })
 }
 
@@ -51,12 +51,11 @@ exports.pollPage = (req, res, next) => {
 }
 
 exports.registerUser = (req, res, next) => {
-  console.log(`Registering ${req.body.firstName} ${req.body.surname} with ${req.body.email} and ${req.body.password} ${req.body.passwordConf}`)
   // confirm that user typed same password twice
   if (req.body.password !== req.body.passwordConf) {
     var err = new Error('Passwords do not match.')
     err.status = 400
-    res.send("passwords dont match")
+    res.send('passwords dont match')
     return next(err)
   }
 
@@ -66,7 +65,6 @@ exports.registerUser = (req, res, next) => {
     req.body.password &&
     req.body.passwordConf) {
     
-      console.log('We have a user')
     var userData = {
       firstName: req.body.firstName,
       surname: req.body.surname,
@@ -76,7 +74,6 @@ exports.registerUser = (req, res, next) => {
     }
 
     User.create(userData, function (error, user) {
-      console.log('In user create')
       if (error) {
         return next(error)
       } else {

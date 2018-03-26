@@ -1,7 +1,19 @@
 const expect = require('chai').expect
 const request = require('supertest')
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 describe('routes', function () {
+  before(function (done) {
+    mongoose.connect(process.env.DATABASE_URL);
+    const db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error'));
+    db.once('open', function () {
+      console.log('We are connected to test database!');
+      done();
+    });
+  });
+  
   let server
   beforeEach(function () {
     server = require('../bin/www')
@@ -59,6 +71,7 @@ describe('routes', function () {
     }
     request(server)
       .post({url: '/register', formData: testUser})
+      .expect('location', '/user-home')
       .expect(200, done)
   })
   it('should respond with 404 for everything else', function testPath (done) {
