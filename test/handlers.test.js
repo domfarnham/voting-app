@@ -2,7 +2,7 @@ const expect = require('chai').expect
 
 describe('handlers', () => {
   describe('registerUser', function () {
-    it("should return 'passwords dont match' when password and confirmation do not match", function () {
+    it("should return 'passwords do not match' when password and confirmation do not match", function () {
       const registerUser = require('../routes/handlers').registerUser
       var request = {
         body: {
@@ -22,7 +22,7 @@ describe('handlers', () => {
         }
       }
       registerUser(request, response, function () {return 'next called'})
-      expect(response.data).to.equal('passwords dont match')
+      expect(response.data).to.equal('passwords do not match')
     })
     it("should return 'All fields required.' when not all fields are completed", function () {
       const registerUser = require('../routes/handlers').registerUser
