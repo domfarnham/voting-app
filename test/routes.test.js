@@ -24,7 +24,7 @@ describe('Read endpoints', function () {
       .expect(200, done)
   })
 
-  it('should respond to /login', function testSignIn (done) {
+  it('should respond to /login', function testlogin (done) {
     request(server)
       .get('/login')
       .expect(200, done)
@@ -96,11 +96,11 @@ describe('/register endpoint', function () {
       .expect(302, done)
   })
   
-  it('should redired to the /user-home page after a new user is registered', function testRegister(done) {
+  it('should redirect to the /user-home page after a new user is registered', function testRegister(done) {
     request(server)
       .post('/register')
       .send(testUser)
-      .expect('location', '/user-home')
+      .expect('location', `/user-home?firstName=${testUser.firstName}`)
       .expect(302, done)
   })
 })

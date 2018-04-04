@@ -13,7 +13,7 @@ exports.loginPage = (req, res, next) => {
 exports.userHomePage = (req, res, next) => {
   res.render('user-home', {
     user: {
-      firstName: 'Dom'
+      firstName: req.query.firstName
     }
   })
 }
@@ -78,7 +78,7 @@ exports.registerUser = (req, res, next) => {
         return next(error)
       } else {
         // req.session.userId = user._id
-        return res.redirect('/user-home')
+        return res.redirect(`/user-home?firstName=${user.firstName}`)
       }
     })
   } else {
