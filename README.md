@@ -5,4 +5,4 @@ Vote4 is a free app for creating custom polls to share with your friends, family
 The app is currently under development, preview it at https://vote-4.herokuapp.com/.
 
 
-<img src="https://cdn.rawgit.com/standard/standard/master/badge.svg?1503150814326" alt="JSStandard Badge" height="56" width="171">
+<img src="https://cdn.jsdelivr.net/gh/standard/standard/badge.svg?1503150814326" alt="JSStandard Badge" height="56" width="171">
